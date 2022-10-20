@@ -14,19 +14,21 @@ namespace webapp_travel_agency.Models
         public decimal Price { get; set; }
         [Required]
         public int Days { get; set; }
+        public string Image { get; set; }
 
         public Package()
         {
 
         }
 
-        public Package(int id, string name, string description, decimal price, int days)
+        public Package(int id, string name, string description, decimal price, int days, string image)
         {
             Id = id;
             Name = name;
             Description = description;
             Price = price;
             Days = days;
+            Image =image;
         }
     }
 }

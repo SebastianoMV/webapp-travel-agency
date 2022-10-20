@@ -11,7 +11,7 @@ using webapp_travel_agency.Data;
 namespace webapp_travel_agency.Migrations
 {
     [DbContext(typeof(PgContext))]
-    [Migration("20221020094142_Initial")]
+    [Migration("20221020104026_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,10 @@ namespace webapp_travel_agency.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
