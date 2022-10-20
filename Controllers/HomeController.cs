@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using webapp_travel_agency.Data;
 using webapp_travel_agency.Models;
 
 namespace webapp_travel_agency.Controllers
@@ -10,6 +12,8 @@ namespace webapp_travel_agency.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        readonly PgContext _context = new();
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -17,8 +21,31 @@ namespace webapp_travel_agency.Controllers
 
         public IActionResult Index()
         {
-            List<Package> packages = new List<Package>();
+            List<Package> packages = _context.Packages.ToList();
             return View(packages);
+        }
+
+        public IActionResult Create()
+        {
+            Package newPackage = new Package();
+            
+
+            return View(newPackage);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Package form)
+        {
+            if (!ModelState.IsValid)
+            {
+                
+                return View("Create", form);
+            }
+
+
+            _context.Add(form);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
