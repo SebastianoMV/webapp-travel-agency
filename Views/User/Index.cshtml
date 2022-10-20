@@ -3,7 +3,7 @@
 <div class="my-3">
     <input type="text" class="form-control js_search" placeholder="Cerca...">
 </div>
-<div class="row cardBody" >
+<div class="row cardBody text-center">
 
 
     
@@ -34,12 +34,12 @@
                     document.querySelector('.cardBody').innerHTML +=
                         `
                          <div class="col-sm-6">
-                             <div class="card mb-3">
+                             <div class="card mb-3" style="box-shadow: 4px 4px 8px 1px #888888;">
                                  <div class="card-body">
                                      <img class="card-img" src="${r.data[i].image}">
                                      <h5 class="card-title">${r.data[i].name}</h5>
                                      <p class="">${r.data[i].description}</p>
-                                     <p class="">${r.data[i].price}</p>
+                                     <p class="">Prezzo a persona: ${r.data[i].price}</p>
                                      <p class="">Viaggio di ${r.data[i].days} giorni</p>
 
                                  </div>
