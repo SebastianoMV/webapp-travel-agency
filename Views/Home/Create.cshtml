@@ -14,14 +14,19 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label for="ImDaysage"></label>
-        <input asp-for="Days" type="text" class="form-control" placeholder="Giorni">
+        <label for="ImDaysage">Giornate di viaggio</label>
+        <input asp-for="Days" type="text" class="form-control" placeholder="Numero giorni">
         <span asp-validation-for="Days" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="Price">Prezzo viaggio</label>
         <input asp-for="Price" type="number" class="form-control" placeholder="Prezzo viaggio">
         <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Image">Immagine</label>
+        <input asp-for="Image" type="text" class="form-control" placeholder="Immagine viaggio">
+        <span asp-validation-for="Image" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

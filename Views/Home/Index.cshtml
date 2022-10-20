@@ -14,15 +14,16 @@
 
 
                 <div class="col-sm-6">
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-body">
+                            <img class="card-img" src="@package.Image">
                             <h5 class="card-title">@package.Name</h5>
-                            <p class="card-text">@package.Description</p>
-                            <p class="card-text">@package.Price &euro;</p>
-                            <p class="card-text">@package.Days</p>
+                            <p class="">@package.Description</p>
+                            <p class="">@package.Price &euro;</p>
+                            <p class="">Viaggio di @package.Days giorni</p>
                             <a href="@Url.Action("Details", "Home", new {Id= package.Id})" class="btn btn-primary">Dettagli</a>
-                            <a href="@Url.Action("Update", "Home", new {Id= package.Id})" class="btn btn-primary">Dettagli</a>
-                            <form asp-controller="Home" asp-action="Delete" asp-route-id="@package.Id">
+                            <a href="@Url.Action("Update", "Home", new {Id= package.Id})" class="btn btn-primary">Modifica</a>
+                            <form asp-controller="Home" asp-action="Delete" asp-route-id="@package.Id" class="d-inline">
                                 @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
                             </form>

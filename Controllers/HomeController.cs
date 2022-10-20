@@ -82,6 +82,7 @@ namespace webapp_travel_agency.Controllers
             package.Description = form.Description;
             package.Price = form.Price;
             package.Days = form.Days;
+            package.Image = form.Image;
            
             _context.Packages.Update(package);
 

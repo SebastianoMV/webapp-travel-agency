@@ -1,0 +1,51 @@
+﻿
+@model List<Package>
+
+<div class="row cardBody" >
+
+
+    
+</div>
+
+
+<script type="text/javascript">
+   
+    GetPackages();
+
+
+    function GetPackages() {
+
+        axios.get('/api/user/get')
+        .then(r => {
+            console.log(r);
+            document.querySelector('.cardBody').innerHTML = '';
+                for (let i = 0; i < r.data.length; i++) {
+                    document.querySelector('.cardBody').innerHTML +=
+                        `
+                         <div class="col-sm-6">
+                             <div class="card mb-3">
+                                 <div class="card-body">
+                                     <img class="card-img" src="${r.data[i].image}">
+                                     <h5 class="card-title">${r.data[i].name}</h5>
+                                     <p class="">${r.data[i].description}</p>
+                                     <p class="">${r.data[i].price}</p>
+                                     <p class="">Viaggio di ${r.data[i].days} giorni</p>
+
+                                 </div>
+                             </div>
+                         </div>
+
+                        `;
+            }
+            
+
+
+        }).catch(e => {
+            console.log(e);
+        });
+    }
+   
+    
+    
+</script>
+
