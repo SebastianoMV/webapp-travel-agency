@@ -20,7 +20,12 @@
                             <p class="card-text">@package.Description</p>
                             <p class="card-text">@package.Price &euro;</p>
                             <p class="card-text">@package.Days</p>
-                            <a href="#" class="btn btn-primary">Dettagli</a>
+                            <a href="@Url.Action("Details", "Home", new {Id= package.Id})" class="btn btn-primary">Dettagli</a>
+                            <a href="@Url.Action("Update", "Home", new {Id= package.Id})" class="btn btn-primary">Dettagli</a>
+                            <form asp-controller="Home" asp-action="Delete" asp-route-id="@package.Id">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,16 @@
+﻿
+@model Package
+
+<div class="card m-auto" style="width: 30%;">
+    
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">@Model.Price</p>
+        <p class="card-text">@Model.Days</p>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Indietro</a>
+        </div>
+    </div>
+</div>
+
