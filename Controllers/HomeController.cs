@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using webapp_travel_agency.Models;
 
 namespace webapp_travel_agency.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,7 +17,8 @@ namespace webapp_travel_agency.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Package> packages = new List<Package>();
+            return View(packages);
         }
 
         public IActionResult Privacy()
