@@ -1,6 +1,8 @@
 ﻿
 @model List<Package>
-
+<div class="my-3">
+    <input type="text" class="form-control js_search" placeholder="Cerca...">
+</div>
 <div class="row cardBody" >
 
 
@@ -10,12 +12,21 @@
 
 <script type="text/javascript">
    
-    GetPackages();
+    GetPackages("");
+    document.querySelector(".js_search").addEventListener('keyup', searchPack);
 
+    function searchPack() {
+        let str = this.value;
+        GetPackages(str);
+    }
 
-    function GetPackages() {
+    function GetPackages(str) {
 
-        axios.get('/api/user/get')
+        axios.get('/api/user/get', {
+            params: {
+                str:str
+            }
+        })
         .then(r => {
             console.log(r);
             document.querySelector('.cardBody').innerHTML = '';
@@ -37,9 +48,6 @@
 
                         `;
             }
-            
-
-
         }).catch(e => {
             console.log(e);
         });
