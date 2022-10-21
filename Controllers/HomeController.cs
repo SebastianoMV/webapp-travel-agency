@@ -47,7 +47,7 @@ namespace webapp_travel_agency.Controllers
 
         public IActionResult Details(int id)
         {
-            Package package = _context.Packages.Where(pack => pack.Id == id).First();
+            Package package = _context.Packages.Where(pack => pack.Id == id).Include("Messages").First();
             if (package == null)
             {
                 return NotFound($"Il pachetto con id {id} non è stato trovato");
