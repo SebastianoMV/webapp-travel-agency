@@ -7,7 +7,7 @@ using webapp_travel_agency.Models;
 
 namespace webapp_travel_agency.Controllers
 {
-    
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
