@@ -13,6 +13,7 @@ namespace webapp_travel_agency.Data
 
         }
         public DbSet<Package> Packages { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public PgContext()
         {

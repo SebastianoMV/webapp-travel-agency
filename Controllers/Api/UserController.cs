@@ -39,5 +39,14 @@ namespace webapp_travel_agency.Controllers.Api
             Package package = _context.Packages.Where(pack => pack.Id == id).FirstOrDefault();
             return Ok(package);
         }
+
+        [HttpPost]
+        public IActionResult Send([FromBody] Message message)
+        {
+            PgContext context = new PgContext();
+            context.Messages.Add(message);
+            context.SaveChanges();
+            return Ok();
+        }
     }
 }

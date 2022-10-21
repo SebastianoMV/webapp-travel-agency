@@ -4,6 +4,32 @@
 <div class="js_card m-auto">
     
 </div>
+<h4>Contattaci per più informazioni</h4>
+<div class="container">
+<div class="row">
+    <div class="col-12">
+            <form onsubmit="SendMessage(event)" id="messageForm">
+            <div class="mb-3">
+                <label for="contact-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contact-email">
+            </div>
+            <div class="mb-3">
+                <label for="contact-name" class="form-label">Nome</label>
+                <input type="text" class="form-control " id="contact-name">
+            </div>
+            <div class="mb-3">
+                <label for="contact-title" class="form-label">Titolo</label>
+                <input type="text" class="form-control" id="contact-title">
+            </div>
+            <div class="mb-3">
+                <label for="contact-text" class="form-label">Testo</label>
+                <textarea class="form-control" id="contact-text" rows="10"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Invia" />
+        </form>
+    </div>
+</div>
+</div>
 
 @Html.Partial("_Footer")
 
@@ -32,6 +58,35 @@
         }).catch(e => {
             console.log(e);
         });
+
+    function SendMessage(e) {
+        e.preventDefault();
+        axios.post("/api/user/send", {
+            email: document.querySelector('#contact-email').value,
+            name: document.querySelector('#contact-name').value,
+            title: document.querySelector('#contact-title').value,
+            text: document.querySelector('#contact-text').value,
+            packageid: id,
+        }).then(res => {
+            document.querySelector('#contact-email').value = '';
+            document.querySelector('#contact-name').value = '';
+            document.querySelector('#contact-title').value = '';
+            document.querySelector('#contact-text').value = '';
+            alert('Messaggio inviato correttamente');
+        }).catch(err => {
+            const datas = ["email", "name", "title", "text"];
+            for (let i = 0; i < datas.length; i++) {
+                if (document.querySelector(`#contact-${datas[i]}`).value == "") {
+                    document.querySelector(`#contact-${datas[i]}`).classList.add("is-invalid");
+                    errors = true;
+                } else {
+                    document.querySelector(`#contact-${datas[i]}`).classList.remove("is-invalid");
+                }
+            }
+
+        })
+
+    }
     
 
    
