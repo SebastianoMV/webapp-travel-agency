@@ -33,16 +33,19 @@
                 for (let i = 0; i < r.data.length; i++) {
                     document.querySelector('.cardBody').innerHTML +=
                         `
-                         <div class="col-sm-6">
-                             <div class="card mb-3" style="box-shadow: 4px 4px 8px 1px #888888;">
-                                 <div class="card-body">
-                                     <img class="card-img" src="${r.data[i].image}">
-                                     <h5 class="card-title">${r.data[i].name}</h5>
-                                     <p class="">${r.data[i].description}</p>
-                                     <p class="">Prezzo a persona: ${r.data[i].price}</p>
-                                     <p class="">Viaggio di ${r.data[i].days} giorni</p>
+                             <div class="col-sm-6" >
 
-                                 </div>
+                                 <div class="card mb-3" style="box-shadow: 4px 4px 8px 1px #888888;" id="linkDetails">
+                                 <a href="/User/Details/${r.data[i].id}" style="text-decoration: none; color:black;">
+                                    <div class="card-body">
+                                        <img class="card-img" src="${r.data[i].image}">
+                                        <h5 class="card-title">${r.data[i].name}</h5>
+                                        <p class="">${r.data[i].description}</p>
+                                        <p class="">Prezzo a persona: ${r.data[i].price}</p>
+                                        <p class="">Viaggio di ${r.data[i].days} giorni</p>
+
+                                    </div>
+                                 </a>
                              </div>
                          </div>
 
@@ -52,7 +55,6 @@
             console.log(e);
         });
     }
-   
     
     
 </script>

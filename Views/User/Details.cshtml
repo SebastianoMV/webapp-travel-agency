@@ -1,0 +1,38 @@
+﻿
+@model List<Package>
+
+<div class="js_card m-auto">
+    
+</div>
+
+<script type="text/javascript">
+   
+    let id = window.location.pathname.split('/')[3];
+
+    
+
+        axios.get('/api/user/get/' + id ).then(r => {
+            const package = r.data;
+            document.querySelector('.js_card').innerHTML = '';
+            
+                document.querySelector('.js_card').innerHTML +=
+                    `
+                            <div class="m-auto container">
+                                    <img src="${package.image}" class="card-img-top" alt="..." style="max-height:500px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">${package.name}</h5>
+                                    <p class="card-text">${package.description}</p>
+                                    <a href="@Url.Action("Index", "User")" class="btn btn-primary">Indietro</a>
+                                </div>
+                            </div>
+                    `;
+        }).catch(e => {
+            console.log(e);
+        });
+    
+
+   
+    
+    
+</script>
+

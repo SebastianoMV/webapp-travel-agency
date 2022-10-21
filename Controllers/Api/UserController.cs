@@ -32,5 +32,12 @@ namespace webapp_travel_agency.Controllers.Api
 
             return Ok(packages.ToList<Package>());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            Package package = _context.Packages.Where(pack => pack.Id == id).FirstOrDefault();
+            return Ok(package);
+        }
     }
 }
